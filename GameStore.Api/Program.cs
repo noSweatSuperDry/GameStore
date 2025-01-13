@@ -49,11 +49,11 @@ app.MapGet("games/{id}", (int id) =>
     }).WithName(GetGameEndPointName); 
 
 //POST
-
+int lastUsedId = games.Count > 0 ? games.Max(g => g.Id) : 0;
 app.MapPost("games", (CreateGameDto newGame)=> 
 {
     GameDto game = new(
-        games.Count +1,
+        ++lastUsedId,
         newGame.Name,
         newGame.Genre,
         newGame.Price,
