@@ -14,7 +14,7 @@ Content-Type: application/json
 {
     "name": "Assassin's Creed Origins Delux",
     "genre": "Adventure",
-    "price": 49.99,
+    "price": -49.99,
     "releaseDate": "2018-10-27"
 }
 
