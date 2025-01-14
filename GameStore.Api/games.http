@@ -12,7 +12,7 @@ POST http://localhost:5232/games
 Content-Type: application/json
 
 {
-    "name": "Assassin's Creed Origins",
+    "name": "Assassin's Creed Origins Delux",
     "genre": "Adventure",
     "price": 49.99,
     "releaseDate": "2018-10-27"
@@ -21,11 +21,11 @@ Content-Type: application/json
 
 ### UPDATE
 
-PUT http://localhost:5232/games/
+PUT http://localhost:5232/games/5
 Content-Type: application/json
 
 {
-    "name": "Assassin's Creed Origins Delux",
+    "name": "Assassin's Creed Origins",
     "genre": "Adventure",
     "price": 0.99,
     "releaseDate": "2018-10-27"

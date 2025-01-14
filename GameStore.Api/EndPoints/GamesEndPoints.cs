@@ -38,7 +38,7 @@ private static readonly List<GameDto> games = [
 ];
 public static RouteGroupBuilder MapGamesEndPoints(this WebApplication app){
 
-var group = app.MapGroup("games");
+var group = app.MapGroup("games").WithParameterValidation();
 
 const string GetGameEndPointName = "Getgame";
 
@@ -55,11 +55,13 @@ group.MapGet("/{id}", (int id) =>
     
     }).WithName(GetGameEndPointName); 
 
+
+
 //POST
 int lastUsedId = games.Count > 0 ? games.Max(g => g.Id) : 0;
 group.MapPost("", (CreateGameDto newGame)=> 
 {
-    GameDto game = new(
+       GameDto game = new(
         ++lastUsedId,
         newGame.Name,
         newGame.Genre,
