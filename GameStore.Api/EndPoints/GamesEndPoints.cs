@@ -48,7 +48,11 @@ public static class GamesEndPoints
         const string GetGameEndPointName = "Getgame";
 
         //GET games
-        group.MapGet("/", () => games);
+        group.MapGet("/", (GameStoreContext dbContext) => dbContext.Games
+                        .Include(game => game.Genre)
+                        .Select(game => game.ToGameSummaryDto())
+                        .AsNoTracking()
+                        );
 
         //GET a game by id
 
