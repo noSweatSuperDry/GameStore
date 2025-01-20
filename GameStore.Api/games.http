@@ -12,10 +12,10 @@ POST http://localhost:5232/games
 Content-Type: application/json
 
 {
-    "name": "Need for speed Heat",
-    "genreId": 4,
+    "name": "Call of duty modern warefare 2",
+    "genreId": 2,
     "price": 19.99,
-    "releaseDate": "2019-11-01"
+    "releaseDate": "2012-11-01"
 }
 
 
