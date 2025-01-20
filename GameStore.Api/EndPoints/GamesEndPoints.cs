@@ -9,37 +9,6 @@ namespace GameStore.Api.EndPoints;
 
 public static class GamesEndPoints
 {
-
-    private static readonly List<GameSummaryDto> games = [
-        new (
-        1,
-        "Path of Exile",
-        "Action RPG",
-        0.00m,
-        new DateOnly(2013, 10, 23)
-    ),
-    new (
-        2,
-        "Diablo 4",
-        "Action RPG",
-        69.99m,
-        new DateOnly(2023, 6, 6)
-    ),
-    new (
-        3,
-        "League of Legends",
-        "MOBA",
-        0.00m,
-        new DateOnly(2009, 10, 27)
-    ),
-    new (
-        4,
-        "Call of Duty: Modern Warfare",
-        "First-Person Shooter",
-        59.99m,
-        new DateOnly(2019, 10, 25)
-    )
-    ];
     public static RouteGroupBuilder MapGamesEndPoints(this WebApplication app)
     {
 
@@ -107,9 +76,11 @@ public static class GamesEndPoints
 
         //DELETE
 
-        group.MapDelete("/{id}", (int id) =>
+        group.MapDelete("/{id}", (int id, GameStoreContext dbContext) =>
         {
-            games.RemoveAll(game => game.Id == id);
+            dbContext.Games.Where(game=> game.Id == id)
+            .ExecuteDelete();
+            
             return Results.NoContent();
         }
         );

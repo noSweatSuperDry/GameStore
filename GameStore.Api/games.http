@@ -5,7 +5,7 @@ GET http://localhost:5232/games
 
 ### FIND
 
-GET http://localhost:5232/games/5
+GET http://localhost:5232/games/4
 
 ### CREATE
 POST http://localhost:5232/games
@@ -21,14 +21,14 @@ Content-Type: application/json
 
 ### UPDATE
 
-PUT http://localhost:5232/games/5
+PUT http://localhost:5232/games/4
 Content-Type: application/json
 
 {
-    "name": "Assassin's Creed Origins",
-    "genre": "Adventure",
-    "price": 0.99,
-    "releaseDate": "2018-10-27"
+    "name": "Horizon Zero Dawn",
+    "genreId": 6,
+    "price": 9.99,
+    "releaseDate": "2017-02-17"
 }
 
 
