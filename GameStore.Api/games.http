@@ -12,10 +12,10 @@ POST http://localhost:5232/games
 Content-Type: application/json
 
 {
-    "name": "Assassin's Creed Origins Delux",
-    "genreId": 6,
-    "price": 49.99,
-    "releaseDate": "2018-10-27"
+    "name": "Need for speed Heat",
+    "genreId": 4,
+    "price": 19.99,
+    "releaseDate": "2019-11-01"
 }
 
 

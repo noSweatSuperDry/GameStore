@@ -2,6 +2,7 @@ using System;
 using GameStore.Api.Data;
 using GameStore.Api.Dtos;
 using GameStore.Api.Entities;
+using GameStore.Api.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Api.EndPoints;
@@ -64,16 +65,17 @@ group.MapGet("/{id}", (int id) =>
 int lastUsedId = games.Count > 0 ? games.Max(g => g.Id) : 0;
 group.MapPost("", (CreateGameDto newGame, GameStoreContext dbContext)=> 
 {
-    Game game = new(){
-        Name = newGame.Name,
-        Genre = dbContext.Genres.Find(newGame.GenreId),
-        GenreId = newGame.GenreId,
-        Price = newGame.Price,
-        ReleaseDate = newGame.ReleaseDate
-    };
+
+    Game game = newGame.ToEntity();
+    game.Genre = dbContext.Genres.Find(newGame.GenreId);
     dbContext.Games.Add(game);
     dbContext.SaveChanges();
-    return Results.CreatedAtRoute(GetGameEndPointName,new {id = game.Id}, game);
+
+    
+    return Results.CreatedAtRoute(
+        GetGameEndPointName,
+        new {id = game.Id}, 
+        game.ToDto());
 });
 
 
